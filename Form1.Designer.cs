@@ -72,6 +72,7 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(100, 20);
             this.txtName.TabIndex = 4;
+            this.txtName.TextChanged += new System.EventHandler(this.TxtName_TextChanged);
             // 
             // txtScore
             // 
@@ -79,6 +80,7 @@
             this.txtScore.Name = "txtScore";
             this.txtScore.Size = new System.Drawing.Size(100, 20);
             this.txtScore.TabIndex = 5;
+            this.txtScore.TextChanged += new System.EventHandler(this.TxtScore_TextChanged);
             // 
             // cboUserID
             // 

@@ -54,10 +54,38 @@ namespace W6DataReader
 
             MySqlConnection Mycon = new MySqlConnection(conString);
 
-            string MyCommandstring = "SELECT `ID` FROM `tbl_Test`";
+            string MyCommandstring = "SELECT `Name`, `Score` FROM `tbl_Test` WHERE `ID` = @ID";
 
             MySqlCommand myCommand = new MySqlCommand(MyCommandstring, Mycon);
 
+            Mycon.Open();
+            //insures that the command is returned
+            myCommand.Prepare();
+
+            myCommand.Parameters.AddWithValue("@ID", cboUserID.SelectedItem.ToString());
+
+            MySqlDataReader r = myCommand.ExecuteReader();
+
+            while(r.Read())
+            {
+
+                //grabbing data from the rows in the database and placing them into the textboxes as a string
+                txtName.Text = r[0].ToString();
+                txtScore.Text = r[1].ToString();
+            }
+
+            
+
+            Mycon.Close();
+        }
+
+        private void TxtName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TxtScore_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }
